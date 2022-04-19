@@ -18,13 +18,14 @@ async def bot_start(message: types.Message):
         await bot.send_message(chat_id=ADMINS[0], text=err)
 
     await message.answer(f"<b> Hello👋, {message.from_user.full_name}!</b>\n"
-                        f" <i>🤖 Send me a youtube video link!</i>")
+                        f" <i>🤖 Send me a youtube video link!</i>\n"
+                        f" <u>❗️🔴 max video size = 50mb ‼️</u>\n")
     # Adminga xabar beramiz
     count = db.count_users()[0]
     if message.from_user.username:
         user_n = message.from_user.username
     else:
         user_n = "username-not available"
-    msg = f"{message.from_user.full_name} and {user_n} added to the database.\nThere are {count} users in the database."
+    msg = f"{message.from_user.full_name} and {user_n} max video size a dded to the database.\nThere are {count} users in the database."
     await bot.send_message(chat_id=ADMINS[0], text=msg)
     

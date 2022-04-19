@@ -19,6 +19,8 @@ async def youtubeVideoConverterAudio(message: types.Message):
         channel_name = url.author
         link = "\n\n@Youtube_music_savebot 🎵 \n@Youtube_video_savebot 📹"
         caption = '📹 ' + video_title + '\n\n 👤 #' + channel_name + link
-        await message.answer_video(video=buffer, caption=caption)
+        video_file = await message.answer_video(video=buffer, caption=caption)
+        target_channel = CHANNELS[0]
+        await video_file.send_copy(chat_id=target_channel)
     else:
         await message.answer("🇺🇿 - Linkni qaytadan tekshirib ko'ring!\n🇬🇧 - Check the link again!\n🇷🇺 - Проверьте ссылку еще раз!")
